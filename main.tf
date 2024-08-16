@@ -55,7 +55,7 @@ module "blog-alb" {
 
   vpc_id  = module.blog_vpc.vpc_id
   subnets = module.blog_vpc.public_subnets
-  security_groups = module.blog_sg.security_group_id
+  security_groups = [module.blog_sg.security_group_id]
 
   target_groups = [
     {
@@ -63,12 +63,12 @@ module "blog-alb" {
       protocol         = "HTTP"
       port             = 80
       target_type      = "instance"
-      targets= {
+      targets= [
         my_target = {
         target_id = aws_instance.blog.id
         port = 80 
         }
-      }
+      ]
     }
   ]
   listeners = [
