@@ -22,7 +22,7 @@ module "blog_vpc" {
   source  = "terraform-aws-modules/vpc/aws"
   version = "5.12.1"
   name= "learning_terraform_nh"
-  cidr="10.0.0.0/10"
+  cidr="10.0.0.0/16"
 
   azs= ["us-west-2a", "us-west-2b","us-west-2c"]
 
