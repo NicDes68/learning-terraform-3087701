@@ -51,7 +51,7 @@ module "blog-alb" {
   source = "terraform-aws-modules/alb/aws"
   version = "~> 9.11.0"
 
-  name    = "nh_testing_alb"
+  name    = "nhtestingalb"
 
   vpc_id  = module.blog_vpc.vpc_id
   subnets = module.blog_vpc.public_subnets
@@ -72,7 +72,7 @@ module "blog-alb" {
     ]
 
   listeners = [
-      {
+      http={
         port              = 80
         protocol          = "HTTP"
         target_group_index = 0
