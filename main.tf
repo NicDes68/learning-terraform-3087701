@@ -22,14 +22,14 @@ resource "aws_instance" "blog" {
   ami           = data.aws_ami.app_ami.id
   instance_type = "t2.micro"
 
-  vpc_security_group_ids = [module.nh_testing_new.security_group_id]
+  vpc_security_group_ids = [module.blog_sg.security_group_id]
 
   tags = {
     Name = "Learning Terraform"
   }
 }
 
-module "security-group" {
+module "blog_sg" {
   source  = "terraform-aws-modules/security-group/aws"
   version = "5.1.2"
   name= "nh_testing_new"
